@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Predikce cen hodinek</title>
+    <style>
+        body {
+            font-family: 'Aptos', sans-serif;
+            font-weight: bolder;
+            background: radial-gradient(circle, #8d8e8d 10%, #302f2f 100%);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: #fdfdfd;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 48px;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .button {
+            background-color: #ffffff;
+            color: #212121;
+            border: none;
+            padding: 12px 30px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: 0.3s;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #191919;
+            color: #f5f5f5;
+        }
+
+        .author {
+            margin-top: 100px;
+            font-size: 1em;
+            color: #fdfdfd;
+            margin-left: min(5%);
+            text-align: left;
+        }
+
+        .popis{
+            margin-top: 10%;
+            margin-bottom: 10%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rolex Datejust Price Prediction</h1>
+    <h2>OMEGA</h2>
+
+    <div class="popis">
+        <h2>Welcome to the Rolex Datejust Configurator!</h2>
+        <p>Select the features of the watch according to your preferences and get an estimated price based on machine learning.</p>
+        <p>Choose the parameters, and at the end, we will display the predicted price for you.</p>
+
+        <p>Want to know how I trained and collected the data? <a href="https://colab.research.google.com/drive/1gDjfbGpYowpRuWRNh_Qa6G4zYLTLJ1QW?usp=sharing" style=" color: inherit;">Click here!</a></p>
+
+    </div>
+
+
+    <a href="{{ url_for('main.step', step='size') }}" class="button">Configure</a>
+    <div class="author" >
+        <p>Krejčiřík Lukáš, C4a</p>
+    </div>
+</body>
+</html>

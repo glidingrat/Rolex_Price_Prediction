@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Aptos:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 id="selectedSize">Datejust {{ session.get('size') }}</h1>
+
+        <form method="POST" action="{{ url_for('main.step', step=current_step) }}">
+            {% if current_step == 'size' %}
+
+                <div class="preview">
+                    <img id="sizeImage" src="{{ url_for('static', filename='images/' + session.get('size') + '.avif' ) }}" alt="Náhled velikosti">
+                </div>
+
+                <div class="option-group">
+                    <label class="choose">Choose your size</label>
+                    <div class="options">
+                        {% for s in [31, 36, 41] %}
+                            <input type="radio" id="size{{ s }}" name="size" value="{{ s }}" {% if size == s|string %}checked{% endif %}  onchange="changeSizeImage('{{ s }}')">
+                            <label for="size{{ s }}" class="option-btn">{{ s }} mm</label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            {% elif current_step == 'material' %}
+                <div class="preview">
+                    <img id="materialImage" src="{{ url_for('static', filename='images/' + session.get('material') + '.avif') }}" alt="Náhled materiálu">
+                </div>
+
+                <div class="option-group">
+                    <label class="choose">Choose your material</label>
+                    <div class="options">
+                        {% for m in ["Stainless Steel", "Gold", "Stainless Steel + Gold"] %}
+                            <input type="radio" id="material{{ m }}" name="material" value="{{ m }}" {% if material == m %}checked{% endif %} onchange="changeMaterialImage('{{ m }}')">
+                            <label for="material{{ m }}" class="option-btn">{{ m }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            {% elif current_step == 'bezel' %}
+
+                 <div class="preview">
+                    <img id="bezelImage" src="{{ url_for('static', filename='images/' + session.get('bezel') + '.avif' ) }}" alt="Náhled bezel">
+                </div>
+
+                <div class="option-group">
+                    <label class="choose">Choose your bezel</label>
+                    <div class="options">
+                        {% for b in ["Smooth", "Fluted", "Diamond"] %}
+                            <input type="radio" id="bezel{{ b }}" name="bezel" value="{{ b }}" {% if bezel == b %}checked{% endif %} onchange="changeBezelImage('{{ b }}')">
+                            <label for="bezel{{ b }}" class="option-btn">{{ b }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            {% elif current_step == 'bracelet' %}
+
+                <div class="preview">
+                    <img id="braceletImage" src="{{ url_for('static', filename='images/' + bracelet_image) }}" alt="Náhled náramku">
+                </div>
+
+                <div class="option-group">
+                    <label class="choose">Choose your bracelet</label>
+                    <div class="options">
+                        {% for br in ["Jubilee", "Oyster"] %}
+                            <input type="radio" id="bracelet{{ br }}" name="bracelet" value="{{ br }}" {% if bracelet == br %}checked{% endif %} onchange="changeBraceletImage('{{ br }}')">
+                            <label for="bracelet{{ br }}" class="option-btn">{{ br }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            {% elif current_step == 'dial' %}
+
+                <div class="preview">
+                    <img id="dialImage" src="{{ url_for('static', filename='images/' + session.get('dial') + '.avif' ) }}" alt="Náhled číselníku">
+                </div>
+
+                <div class="option-group">
+                    <label class="choose">Choose your dial</label>
+                    <div class="options">
+                        {% for d in ["Black", "Silver", "Champagne", "Green", "Blue", "White"] %}
+                            <input type="radio" id="dial{{ d }}" name="dial" value="{{ d }}" {% if dial == d %}checked{% endif %} onchange="changeDialImage('{{ d }}')">
+                            <label for="dial{{ d }}" class="option-btn">{{ d }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            {% elif current_step == 'papers' %}
+                <div class="option-group">
+                    <label class="choose">Original documents?</label>
+                    <div class="options">
+                        {% for p in ["Yes", "No"] %}
+                            <input type="radio" id="papers{{ p }}" name="papers" value="{{ p }}" {% if papers == p %}checked{% endif %}>
+                            <label for="papers{{ p }}" class="option-btn">{{ p }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            {% elif current_step == 'prediction' %}
+                <h1>Price Prediction: {{ cena }} USD</h1>
+
+                <div class="prediction-wrapper" style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem;">
+                    <!-- Výsledek predikce -->
+                    <div class="result-box" style="flex: 1; min-width: 300px; padding: 1rem;">
+                        <h2>Configuration</h2>
+                        <p>Size: {{ size }} mm</p>
+                        <p>Material: {{ material }}</p>
+                        <p>Bezel: {{ bezel }}</p>
+                        <p>Bracelet: {{ bracelet }}</p>
+                        <p>Dial: {{ dial }}</p>
+                        <p>Papers: {{ papers }}</p>
+
+                    </div>
+                </div>
+
+
+            <a href="{{ url_for('main.step', step='main') }}" class="button">Homepage</a>
+
+            {% endif %}
+
+            {% if current_step != 'prediction' %}
+            <div class="button-container">
+                {% if back_url %}
+                    <a href="{{ back_url }}" class="button">&laquo;</a>
+                {% endif %}
+                <button type="submit">{{ next_button_text }} &raquo;</button>
+            </div>
+            {% endif %}
+
+        </form>
+
+    </div>
+
+<script>
+
+    function changeMaterialImage(material) {
+    document.getElementById('materialImage').src = "/static/images/" + material + ".avif";
+}
+
+function changeBraceletImage(bracelet) {
+
+    let url = `/get_bracelet_image/${encodeURIComponent("{{ session['material'] }}")}/${encodeURIComponent(bracelet)}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log("🔹 Received image:", data.image);
+            document.getElementById('braceletImage').src = "/static/images/" + data.image;
+        })
+        .catch(error => console.error('Chyba při načítání obrázku:', error));
+}
+
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let sizeOptions = document.querySelectorAll('input[name="size"]');
+        let titleElement = document.getElementById("selectedSize");
+
+        sizeOptions.forEach(option => {
+            option.addEventListener("change", function () {
+                titleElement.textContent = "Datejust " + this.value;
+            });
+        });
+    });
+
+
+    function changeDialImage(dial) {
+    document.getElementById('dialImage').src = "/static/images/" + dial + ".avif";
+}
+
+    function changeSizeImage(size) {
+    document.getElementById('sizeImage').src = "/static/images/" + size + ".avif";
+}
+    function changeBezelImage(bezel) {
+    document.getElementById('bezelImage').src = "/static/images/" + bezel + ".avif";
+}
+
+</script>
+
+
+</body>
+</html>

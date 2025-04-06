@@ -1,0 +1,140 @@
+body {
+    font-family: 'Aptos', sans-serif;
+    font-weight: bolder;
+    background: radial-gradient(circle, #8d8e8d 10%, #302f2f 100%);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Pro pozicování vnitřních elementů */
+}
+
+p, h2{
+    color: #fdfdfd;
+}
+
+h1 {
+    color: #fdfdfd;
+    margin-bottom: 20px;
+    font-size: 48px;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: min(5%);
+    padding: 10px;
+}
+
+.option-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: flex;
+    justify-content: flex-start;
+    color: #fdfdfd;
+    margin-bottom: 5px;
+    font-size: 16px; /* Můžeš nastavit i jinou velikost */
+}
+
+.options {
+    display: flex;
+    justify-content: flex-start; /* Umožní zarovnání k levému okraji */
+    gap: 10px;
+    flex-wrap: wrap;; /* Můžeš upravit, aby byl prostor mezi levým okrajem a možnostmi */
+    margin-left: min(5%);
+}
+
+
+.choose {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 24px;
+    margin-left: min(5%);
+    padding: 10px;
+}
+
+/* Styl pro radio buttony, který dává efekt změny barvy textu při najetí */
+input[type="radio"] {
+    display: none;
+}
+
+.option-btn {
+    padding: 10px 10px;
+    background-color: transparent; /* Bez pozadí */
+    color: #888; /* Zašedlá barva textu */
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Změna barvy textu při najetí */
+.option-btn:hover {
+    color: #fbfbfb; /* Text zesvětlí */
+}
+
+/* Zvýraznění po kliknutí */
+input[type="radio"]:checked + .option-btn {
+    color: white;
+    font-weight: bold;
+}
+
+/* Tečka, která se objeví po kliknutí */
+input[type="radio"]:checked + .option-btn::after {
+    content: '•'; /* Tečka */
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    right: -2px; /* Posun tečky doprava */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Bez tečky, když není vybráno */
+input[type="radio"]:not(:checked) + .option-btn::after {
+    content: '';
+}
+
+.button-container {
+    font-family: 'Aptos', sans-serif;
+    display: flex;
+    gap: 10px; /* Mezera mezi tlačítky */
+    justify-content: center; /* Zarovnání na střed */
+    margin-top: 20px; /* Odsazení od ostatních prvků */
+}
+
+button {
+    background-color: #ffffff;
+    color: #212121;
+    border: none;
+    padding: 10px 30px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.button{
+    background-color: #ffffff;
+    color: #212121;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+button:hover, .button:hover {
+    background-color: #191919;
+    color: #f5f5f5;
+}
+
+.preview img {
+    max-width: 55%;
+    object-fit: contain;
+}
