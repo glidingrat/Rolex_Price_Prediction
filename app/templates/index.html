@@ -11,7 +11,7 @@
     <div class="container">
         <h1 id="selectedSize">Datejust {{ session.get('size') }}</h1>
 
-        <form method="POST" action="{{ url_for('main.step', step=current_step) }}">
+        <form method="POST" action="{{ url_for('step', step=current_step) }}">
             {% if current_step == 'size' %}
 
                 <div class="preview">
@@ -62,7 +62,7 @@
             {% elif current_step == 'bracelet' %}
 
                 <div class="preview">
-                    <img id="braceletImage" src="{{ url_for('static', filename='images/' + bracelet_image) }}" alt="Náhled náramku">
+                    <img id="braceletImage" src="{{ url_for('static', filename='images/' + bracelet_image ) }}" alt="Náhled náramku">
                 </div>
 
                 <div class="option-group">
@@ -120,7 +120,7 @@
                 </div>
 
 
-            <a href="{{ url_for('main.step', step='main') }}" class="button">Homepage</a>
+            <a href="{{ url_for('step', step='main') }}" class="button">Homepage</a>
 
             {% endif %}
 
@@ -144,19 +144,10 @@
 }
 
 function changeBraceletImage(bracelet) {
-
-    let url = `/get_bracelet_image/${encodeURIComponent("{{ session['material'] }}")}/${encodeURIComponent(bracelet)}`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            console.log("🔹 Received image:", data.image);
-            document.getElementById('braceletImage').src = "/static/images/" + data.image;
-        })
-        .catch(error => console.error('Chyba při načítání obrázku:', error));
+    const material = "{{ material }}";  // hodnotu vezmeš z Jinja (contextu)
+    let imageName = `${material}_${bracelet}.avif`;
+    document.getElementById("braceletImage").src = "/static/images/" + imageName;
 }
-
-
 
 
     document.addEventListener("DOMContentLoaded", function () {

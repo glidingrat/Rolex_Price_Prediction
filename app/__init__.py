@@ -1,6 +1,7 @@
 import json
 import os
 from flask import Flask
+from .controllers import init_routes
 
 def create_app():
     app = Flask(__name__)
@@ -34,7 +35,7 @@ def create_app():
     except Exception as e:
         raise Exception(f"Nastala chyba při načítání konfiguračního souboru: {e}")
 
-    from .controllers import main
-    app.register_blueprint(main)
+    # Inicializace rout
+    init_routes(app)
 
     return app

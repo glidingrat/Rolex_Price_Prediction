@@ -1,5 +1,5 @@
 # Predikce ceny hodinek Rolex Datejust
-Projekt predikuje cenu (pomocí strojového učení) hodinek ná základě atributů: Size, Material, Bezel, Bracelet, Dial Color, With Papers
+Projekt predikuje cenu hodinek ná základě atributů: Size, Material, Bezel, Bracelet, Dial Color, With Papers
 
 ## Jak spustit program? 
 Otevřte si soubor v `cmd` a poté pište:
@@ -24,7 +24,7 @@ Projekt podle vzoru MVC (Model-View-Controller)
 - **RandomForestRegressor** [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
 - **Sběr dat a trénování modelu** [Google colab](https://colab.research.google.com/drive/1gDjfbGpYowpRuWRNh_Qa6G4zYLTLJ1QW?usp=sharing)
 - **Jak získat ebay api** [yt link](https://youtu.be/i9A3zvuMWNc?si=Ukpy9Q4037IxKuW7)
--  [GitHub](https://github.com/glidingrat/Rolex_Price_Prediction)
+- [GitHub](https://github.com/glidingrat/Rolex_Price_Prediction)
 
 
 ---
