@@ -1,4 +1,5 @@
 # Predikce ceny hodinek Rolex Datejust
+Projekt predikuje cenu hodinek ná základě atributů: Size, Material, Bezel, Bracelet, Dial Color, With Papers
 
 ## Jak spustit program? 
 Otevřte si soubor v `cmd` a poté pište:
