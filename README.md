@@ -1,5 +1,5 @@
 # Predikce ceny hodinek Rolex Datejust
-Projekt predikuje cenu hodinek ná základě atributů: Size, Material, Bezel, Bracelet, Dial Color, With Papers
+Projekt funguje na základě vytrénovaného modelu na datech z Ebay, který predikuje cenu hodinek na základě atributů: Size, Material, Bezel, Bracelet, Dial Color, With Papers
 
 ## Jak spustit program? 
 Otevřte si soubor v `cmd` a poté pište:
@@ -28,4 +28,5 @@ Projekt podle vzoru MVC (Model-View-Controller)
 
 
 ---
+
 Krejčiřík Lukáš, C4a | Email: krejcirik@spsejecna.cz | 6.4.2025 | SPŠE Ječná | Školní projekt
