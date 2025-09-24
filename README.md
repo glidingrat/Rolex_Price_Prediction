@@ -20,9 +20,9 @@ Projekt podle vzoru MVC (Model-View-Controller)
  - `controllers.py` Zpracovává vstupy z formuláře, připravuje predikci a pošle ji zpět do view
 
 ## Odkazy
+- **Sběr dat a trénování modelu** [Google colab](https://colab.research.google.com/drive/1gDjfbGpYowpRuWRNh_Qa6G4zYLTLJ1QW?usp=sharing)
 - **YT link na Random Forest model**: [Random Forest](https://www.youtube.com/watch?v=ok2s1vV9XW0)
 - **RandomForestRegressor** [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
-- **Sběr dat a trénování modelu** [Google colab](https://colab.research.google.com/drive/1gDjfbGpYowpRuWRNh_Qa6G4zYLTLJ1QW?usp=sharing)
 - **Jak získat ebay api** [yt link](https://youtu.be/i9A3zvuMWNc?si=Ukpy9Q4037IxKuW7)
 - [GitHub](https://github.com/glidingrat/Rolex_Price_Prediction)
 
@@ -30,3 +30,4 @@ Projekt podle vzoru MVC (Model-View-Controller)
 ---
 
 Krejčiřík Lukáš, C4a | Email: krejcirik@spsejecna.cz | 6.4.2025 | SPŠE Ječná | Školní projekt
+
